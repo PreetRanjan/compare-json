@@ -42,11 +42,47 @@
           </div>
         </div>
         <div class="p-2 bd-highlight">
-          <a class="btn btn-primary btn-lg" href="https://preetranjan.github.io/format-json/">
-            Pretify JSON
+          <a
+            class="btn btn-primary"
+            type="button"
+            href="https://preetranjan.github.io/format-json/"
+          >
+            Home
           </a>
         </div>
-        <div class="p-2 bd-highlight"></div>
+        <div class="p-2 bd-highlight">
+          <div class="dropdown">
+            <a
+              class="btn btn-light dropdown-toggle"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              More
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="https://preetranjan.github.io/compare-json/"
+                  >Compare JSON</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <a
+                    class="dropdown-item"
+                    href="https://preetranjan.github.io/deep-compare-json/"
+                    >Deep Compare JSON</a
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-6">
@@ -64,6 +100,15 @@
                 id="btncopy"
               >
                 Copy
+              </button>
+            </div>
+            <div class="p-2 bd-highlight">
+              <button
+                class="btn btn-secondary btn-sm"
+                type="button"
+                onclick="formatJsonArea('left')"
+              >
+                Format
               </button>
             </div>
           </div>
@@ -90,6 +135,15 @@
                 id="btncopy"
               >
                 Copy
+              </button>
+            </div>
+            <div class="p-2 bd-highlight">
+              <button
+                class="btn btn-secondary btn-sm"
+                type="button"
+                onclick="formatJsonArea('right')"
+              >
+                Format
               </button>
             </div>
           </div>
@@ -160,6 +214,23 @@
         console.log(event.target.innerText);
         event.target.innerText = "Copied";
       });
+
+      function formatJsonArea(element) {
+        let inputJson = document.getElementById(element);
+
+        const formatedJson = JSON.stringify(
+          JSON.parse(inputJson.value),
+          null,
+          4
+        );
+
+        inputJson.value = formatedJson;
+      }
+
+      function copyToClipBoard(element) {
+        let inputJson = document.getElementById(element).value;
+        navigator.clipboard.writeText(inputJson);
+      }
     </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
